@@ -147,6 +147,12 @@ body.locked { overflow: hidden; }
   color: var(--ink-soft);
 }
 
+/* кадрирование под фото: папа в левой части кадра, мама — в правой */
+.photo-papa img { object-position: 18% center; }
+.photo-mama img { object-position: 82% center; }
+.catch-photo:first-child img { object-position: 20% center; }
+.catch-photo:last-child img { object-position: 80% center; }
+
 /* выезд слева и справа к центру */
 .photo-papa { transform: translateX(-70vw) rotate(-8deg); }
 .photo-mama { transform: translateX(70vw) rotate(8deg); }
