@@ -10,6 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💌%3C/text%3E%3C/svg%3E" />
+  <script>
+    /* Перебор запасных путей к фото: если файл не найден, пробуем следующее имя */
+    function imgFallback(el) {
+      var list = (el.dataset.fallbacks || "").split("|").filter(Boolean);
+      var i = +(el.dataset.fi || 0);
+      if (i < list.length) { el.dataset.fi = i + 1; el.src = list[i]; }
+      else { el.onerror = null; }
+    }
+  </script>
 </head>
 <body>
 
@@ -30,12 +39,14 @@
     <div class="photos-row">
       <figure class="photo-card photo-papa" id="photo-papa">
         <img src="assets/papa.jpg" alt="Папа"
-             onerror="this.onerror=null;this.src='assets/placeholder-papa.svg'" />
+             data-fallbacks="assets/ПАПА.png|assets/papa.png|assets/placeholder-papa.svg"
+             onerror="imgFallback(this)" />
       </figure>
       <div class="photos-heart" id="photos-heart">❤</div>
       <figure class="photo-card photo-mama" id="photo-mama">
         <img src="assets/mama.jpg" alt="Мама"
-             onerror="this.onerror=null;this.src='assets/placeholder-mama.svg'" />
+             data-fallbacks="assets/МАМА.png|assets/mama.png|assets/placeholder-mama.svg"
+             onerror="imgFallback(this)" />
       </figure>
     </div>
 
@@ -102,11 +113,15 @@
 
       <div class="catch-row" id="catch-row">
         <div class="catch-photo">
-          <img src="assets/papa.jpg" alt="" onerror="this.onerror=null;this.src='assets/placeholder-papa.svg'" />
+          <img src="assets/papa.jpg" alt=""
+               data-fallbacks="assets/ПАПА.png|assets/papa.png|assets/placeholder-papa.svg"
+               onerror="imgFallback(this)" />
         </div>
         <div class="catch-hands" aria-hidden="true">🤲</div>
         <div class="catch-photo">
-          <img src="assets/mama.jpg" alt="" onerror="this.onerror=null;this.src='assets/placeholder-mama.svg'" />
+          <img src="assets/mama.jpg" alt=""
+               data-fallbacks="assets/МАМА.png|assets/mama.png|assets/placeholder-mama.svg"
+               onerror="imgFallback(this)" />
         </div>
       </div>
 
@@ -126,7 +141,8 @@
     <div class="final-inner">
       <figure class="uzi-card">
         <img src="assets/uzi.jpg" alt="Снимок УЗИ"
-             onerror="this.onerror=null;this.src='assets/placeholder-uzi.svg'" />
+             data-fallbacks="assets/узи|assets/узи.jpg|assets/узи.png|assets/УЗИ.png|assets/uzi.png|assets/placeholder-uzi.svg"
+             onerror="imgFallback(this)" />
         <figcaption>наш маленький секрет</figcaption>
       </figure>
 
