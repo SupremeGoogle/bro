@@ -129,22 +129,26 @@ body.locked { overflow: hidden; }
   border: none;
   padding: 0;
   box-shadow: none;
+  width: clamp(210px, 30vw, 400px);
   opacity: 0;
 }
 
 .photo-card img {
   display: block;
-  height: clamp(340px, 64vh, 620px);
-  width: auto;
-  max-width: 48vw;
-  object-fit: contain;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
   background: none;
   filter: drop-shadow(0 22px 26px rgba(120, 80, 70, 0.22));
 }
 
-/* картинки придвинуты друг к другу */
-.photo-papa { margin-right: -3%; }
-.photo-mama { margin-left: -3%; }
+/* обрезаем пустой прозрачный фон по бокам — лица к центру */
+.photo-papa img { object-position: 30% 22%; }
+.photo-mama img { object-position: 70% 22%; }
+
+/* фигуры придвинуты вплотную к сердечку */
+.photo-papa { margin-right: -4%; }
+.photo-mama { margin-left: -4%; }
 
 /* выезд слева и справа к центру */
 .photo-papa { transform: translateX(-70vw) rotate(-8deg); }
