@@ -119,39 +119,32 @@ body.locked { overflow: hidden; }
 .photos-row {
   display: flex;
   align-items: center;
-  gap: clamp(0.75rem, 4vw, 2.5rem);
+  justify-content: center;
+  gap: 0;
 }
 
+/* фото без рамки — стоят прямо на фоне, с мягкой тенью по силуэту */
 .photo-card {
-  background: var(--white);
-  border-radius: 18px;
-  padding: 12px;
-  box-shadow: 0 22px 45px -18px rgba(120, 80, 70, 0.35);
-  width: clamp(140px, 32vw, 260px);
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
   opacity: 0;
 }
 
 .photo-card img {
   display: block;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 12px;
-  background: var(--sky);
+  height: clamp(340px, 64vh, 620px);
+  width: auto;
+  max-width: 48vw;
+  object-fit: contain;
+  background: none;
+  filter: drop-shadow(0 22px 26px rgba(120, 80, 70, 0.22));
 }
 
-.photo-card figcaption {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  padding-top: 0.6rem;
-  color: var(--ink-soft);
-}
-
-/* кадрирование под фото: папа в левой части кадра, мама — в правой */
-.photo-papa img { object-position: 18% center; }
-.photo-mama img { object-position: 82% center; }
-.catch-photo:first-child img { object-position: 20% center; }
-.catch-photo:last-child img { object-position: 80% center; }
+/* картинки придвинуты друг к другу */
+.photo-papa { margin-right: -3%; }
+.photo-mama { margin-left: -3%; }
 
 /* выезд слева и справа к центру */
 .photo-papa { transform: translateX(-70vw) rotate(-8deg); }
@@ -177,10 +170,14 @@ body.locked { overflow: hidden; }
 }
 
 .photos-heart {
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
   color: var(--blush-deep);
   opacity: 0;
   transform: scale(0);
+  position: relative;
+  z-index: 2;
+  margin: 0 -0.6rem;
+  filter: drop-shadow(0 4px 10px rgba(239, 195, 204, 0.7));
 }
 
 .photos-ready .photos-heart {
