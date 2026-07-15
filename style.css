@@ -292,7 +292,8 @@ body.locked { overflow: hidden; }
 .stork-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;   /* показываем видео целиком, без обрезки */
+  background: transparent;   /* по краям — нежный фон сцены */
   display: none;
 }
 
