@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dcebf7"/>
+      <stop offset="1" stop-color="#c3d9ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#bg)"/>
+  <circle cx="150" cy="150" r="62" fill="#fffdfa"/>
+  <circle cx="150" cy="132" r="30" fill="#a9c3dd"/>
+  <path d="M96 214 Q150 160 204 214 L204 214 Q150 250 96 214 Z" fill="#a9c3dd"/>
+  <path d="M96 213 a54 54 0 0 1 108 0 z" fill="#a9c3dd"/>
+  <text x="150" y="300" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#5c7897">Фото папы</text>
+  <text x="150" y="332" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#7e94ad">загрузите assets/papa.jpg</text>
+</svg>

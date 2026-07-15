@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>У нас есть новость для вас 💌</title>
+  <meta name="description" content="Открытка с очень важной новостью для будущих бабушки и дедушки." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💌%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- ===== Сцена 1: мама и папа съезжаются к центру ===== -->
+  <section class="scene scene-hero" id="scene-hero">
+    <div class="sky-decor" aria-hidden="true">
+      <span class="cloud cloud-1"></span>
+      <span class="cloud cloud-2"></span>
+      <span class="cloud cloud-3"></span>
+      <span class="heart-float heart-1">♡</span>
+      <span class="heart-float heart-2">♡</span>
+      <span class="heart-float heart-3">♡</span>
+    </div>
+
+    <p class="eyebrow">Дорогие мама и папа</p>
+    <h1 class="hero-title">Это открытка для&nbsp;вас</h1>
+
+    <div class="photos-row">
+      <figure class="photo-card photo-papa" id="photo-papa">
+        <img src="assets/papa.jpg" alt="Папа"
+             onerror="this.onerror=null;this.src='assets/placeholder-papa.svg'" />
+        <figcaption>Папа</figcaption>
+      </figure>
+      <div class="photos-heart" id="photos-heart">❤</div>
+      <figure class="photo-card photo-mama" id="photo-mama">
+        <img src="assets/mama.jpg" alt="Мама"
+             onerror="this.onerror=null;this.src='assets/placeholder-mama.svg'" />
+        <figcaption>Мама</figcaption>
+      </figure>
+    </div>
+
+    <button class="scroll-hint" id="scroll-hint" type="button" aria-label="Листайте вниз">
+      <span>листайте вниз</span>
+      <span class="scroll-arrow">↓</span>
+    </button>
+  </section>
+
+  <!-- ===== Сцена 2: интрига и кнопка ===== -->
+  <section class="scene scene-teaser" id="scene-teaser">
+    <div class="teaser-inner reveal-on-scroll">
+      <p class="eyebrow">шёпотом</p>
+      <h2 class="teaser-title">У нас есть для вас<br />одна очень важная новость…</h2>
+      <p class="teaser-sub">Сделайте глубокий вдох — и нажмите на кнопку.</p>
+      <button class="btn-news" id="btn-news" type="button">Узнать новость ✨</button>
+    </div>
+  </section>
+
+  <!-- ===== Сцена 3: видео / анимация с аистом (полноэкранный оверлей) ===== -->
+  <div class="stage" id="stork-stage" hidden>
+    <!-- Настоящее видео: появится, когда в assets/ будет загружен stork.mp4 -->
+    <video id="stork-video" class="stork-video" playsinline preload="auto">
+      <source src="assets/stork.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Временная анимация-заглушка, пока видео не загружено -->
+    <div class="stork-fallback" id="stork-fallback" hidden>
+      <div class="sky-decor" aria-hidden="true">
+        <span class="cloud cloud-1"></span>
+        <span class="cloud cloud-2"></span>
+        <span class="cloud cloud-3"></span>
+      </div>
+
+      <div class="stork-wrap" id="stork-wrap">
+        <svg class="stork-svg" viewBox="0 0 220 170" aria-hidden="true">
+          <!-- ноги -->
+          <path d="M96 96 L86 138 M108 98 L104 140" stroke="#E8927C" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <!-- тело -->
+          <ellipse cx="100" cy="78" rx="46" ry="30" fill="#FFFDF9"/>
+          <!-- крыло (машет) -->
+          <path class="stork-wing" d="M78 72 Q104 34 148 44 Q120 70 96 84 Z" fill="#F3E3D6"/>
+          <!-- хвост -->
+          <path d="M56 84 Q40 96 34 112 Q54 104 66 94 Z" fill="#5B5350"/>
+          <!-- шея и голова -->
+          <path d="M140 66 Q166 54 172 34" stroke="#FFFDF9" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <circle cx="174" cy="30" r="11" fill="#FFFDF9"/>
+          <circle cx="178" cy="27" r="2" fill="#42403E"/>
+          <!-- клюв, держит узелок -->
+          <path d="M183 31 L212 42 L184 39 Z" fill="#E8927C"/>
+        </svg>
+
+        <div class="bundle" id="bundle">
+          <svg viewBox="0 0 60 70" aria-hidden="true">
+            <path d="M30 4 Q10 30 12 46 Q30 70 48 46 Q50 30 30 4" fill="#F8DCE0" stroke="#E9B9C3" stroke-width="2"/>
+            <path d="M30 4 Q26 22 30 34 Q34 22 30 4" fill="#F3C7CF"/>
+            <circle cx="30" cy="46" r="9" fill="#FFE9D8"/>
+            <circle cx="27" cy="45" r="1.4" fill="#8A6E60"/>
+            <circle cx="33" cy="45" r="1.4" fill="#8A6E60"/>
+            <path d="M27 50 Q30 52 33 50" stroke="#8A6E60" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="catch-row" id="catch-row">
+        <div class="catch-photo">
+          <img src="assets/papa.jpg" alt="" onerror="this.onerror=null;this.src='assets/placeholder-papa.svg'" />
+        </div>
+        <div class="catch-hands" aria-hidden="true">🤲</div>
+        <div class="catch-photo">
+          <img src="assets/mama.jpg" alt="" onerror="this.onerror=null;this.src='assets/placeholder-mama.svg'" />
+        </div>
+      </div>
+
+      <p class="fallback-note">место для вашего видео · assets/stork.mp4</p>
+    </div>
+
+    <button class="skip-btn" id="skip-btn" type="button">Пропустить ›</button>
+  </div>
+
+  <!-- ===== Ослепляющая вспышка-переход ===== -->
+  <div class="flash" id="flash" hidden></div>
+
+  <!-- ===== Сцена 4: финал — УЗИ и салют ===== -->
+  <div class="stage scene-final" id="scene-final" hidden>
+    <canvas id="fireworks" class="fireworks-canvas" aria-hidden="true"></canvas>
+
+    <div class="final-inner">
+      <figure class="uzi-card">
+        <img src="assets/uzi.jpg" alt="Снимок УЗИ"
+             onerror="this.onerror=null;this.src='assets/placeholder-uzi.svg'" />
+        <figcaption>наш маленький секрет</figcaption>
+      </figure>
+
+      <h2 class="final-title">Вы скоро станете<br /><span>бабушкой и дедушкой!</span></h2>
+      <p class="final-sub">Мы ждём малыша — и очень вас любим ❤</p>
+
+      <button class="btn-replay" id="btn-replay" type="button">Посмотреть ещё раз ↺</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

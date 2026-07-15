@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#161320"/>
+  <path d="M200 60 A150 150 0 0 1 340 240 L60 240 A150 150 0 0 1 200 60 Z" fill="#241f33"/>
+  <path d="M200 90 A115 115 0 0 1 305 240 L95 240 A115 115 0 0 1 200 90 Z" fill="#332b47"/>
+  <ellipse cx="200" cy="185" rx="46" ry="38" fill="#4a3f60" opacity="0.9"/>
+  <circle cx="188" cy="172" r="16" fill="#5d5077"/>
+  <ellipse cx="212" cy="195" rx="22" ry="17" fill="#5d5077"/>
+  <text x="200" y="46" text-anchor="middle" font-family="monospace" font-size="14" fill="#8f84ad">· снимок УЗИ ·</text>
+  <text x="200" y="272" text-anchor="middle" font-family="monospace" font-size="12" fill="#6e6390">загрузите assets/uzi.jpg</text>
+</svg>
