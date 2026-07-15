@@ -125,7 +125,7 @@ body.locked { overflow: hidden; }
 .photo-card {
   background: var(--white);
   border-radius: 18px;
-  padding: 12px 12px 14px;
+  padding: 12px;
   box-shadow: 0 22px 45px -18px rgba(120, 80, 70, 0.35);
   width: clamp(140px, 32vw, 260px);
   opacity: 0;
