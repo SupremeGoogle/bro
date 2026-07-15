@@ -43,39 +43,29 @@ const observer = new IntersectionObserver(
 );
 observer.observe(teaserInner);
 
-/* ---------- сцена 3: видео или анимация с аистом ---------- */
-
-let videoBroken = false;
-storkVideo.addEventListener("error", () => { videoBroken = true; }, true);
-const sourceEl = storkVideo.querySelector("source");
-if (sourceEl) sourceEl.addEventListener("error", () => { videoBroken = true; });
+/* ---------- сцена 3: видео с аистом ---------- */
 
 btnNews.addEventListener("click", () => {
   finaleStarted = false;
   document.body.classList.add("locked");
   storkStage.hidden = false;
 
-  const canTryVideo =
-    !videoBroken && storkVideo.networkState !== HTMLMediaElement.NETWORK_NO_SOURCE;
+  // Главное — играем видео
+  storkStage.classList.add("video-mode");
+  try { storkVideo.currentTime = 0; } catch (e) {}
 
-  if (canTryVideo) {
-    storkStage.classList.add("video-mode");
-    const playAttempt = storkVideo.play();
+  // После окончания видео — вспышка и финал
+  storkVideo.addEventListener("ended", startFinale, { once: true });
+  // Только настоящая ошибка воспроизведения включает запасную анимацию
+  storkVideo.addEventListener("error", runFallbackAnimation, { once: true });
 
-    storkVideo.addEventListener("ended", startFinale, { once: true });
-
-    if (playAttempt && playAttempt.catch) {
-      playAttempt.catch(() => runFallbackAnimation());
-    }
-
-    // если видео так и не начало играть за 2.5 секунды — показываем заглушку
-    const watchdog = setTimeout(() => {
-      if (storkVideo.readyState < 2 || storkVideo.paused) runFallbackAnimation();
-    }, 2500);
-    storkVideo.addEventListener("playing", () => clearTimeout(watchdog), { once: true });
-    fallbackTimers.push(watchdog);
-  } else {
-    runFallbackAnimation();
+  const playAttempt = storkVideo.play();
+  if (playAttempt && playAttempt.catch) {
+    playAttempt.catch(() => {
+      // Если браузер не дал играть со звуком — пробуем без звука
+      storkVideo.muted = true;
+      storkVideo.play().catch(() => runFallbackAnimation());
+    });
   }
 });
 
